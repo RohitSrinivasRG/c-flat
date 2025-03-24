@@ -14,9 +14,9 @@
 
 #include "LiquidCrystal.h"
 #include "util.h"
-#include "kernel/kprintf.h"
-#include "kernel/log.h"
-#include "kernel/led.h"
+#include "kprintf.h"
+/* #include "kernel/log.h" */
+/* #include "kernel/led.h" */
 
 #include "lib/cfa_stub.h"
 
@@ -232,13 +232,13 @@ void bolus(int direction){
 	//change units to steps
 	long steps = (mLBolus * ustepsPerML);
 	if(direction == PUSH){
-		led_on();
+		/* led_on(); */
 		digitalWrite(motorDirPin, HIGH);
 		steps = mLBolus * ustepsPerML;
 		mLUsed += mLBolus;
 	}
 	else if(direction == PULL){
-		led_off();
+		/* led_off(); */
 		digitalWrite(motorDirPin, LOW);
 		if((mLUsed-mLBolus) > 0){
 			mLUsed -= mLBolus;
